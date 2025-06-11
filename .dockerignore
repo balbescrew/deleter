@@ -1,0 +1,32 @@
+# Don't include Git-related stuff
+.git
+.gitignore
+
+# Python virtual environments
+.venv
+*.pyc
+__pycache__/
+
+# Local environment variables
+# .env
+.env.example
+
+# OS / Editor files
+.DS_Store
+*.swp
+*.swo
+*.bak
+
+# Python project metadata that should not be copied (esp. for Poetry/pip)
+*.egg-info/
+dist/
+build/
+
+# Lockfiles (optional – keep if you want reproducibility inside image)
+*.lock
+
+# Dockerignore itself (not needed in image)
+.dockerignore
+
+# Python version manager files (not needed in container)
+.python-version
