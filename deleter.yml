@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deleter
+  labels:
+    app: deleter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deleter
+  template:
+    metadata:
+      labels:
+        app: deleter
+    spec:
+      containers:
+      - name: deleter-bot
+        image: demianight/anti_spam_deleter:latest
+        imagePullPolicy: Always
+        env:
+        - name: BOT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: bot-token-secret
+              key: BOT_TOKEN
+        - name: KAFKA_BROKER
+          value: "kafka:9092"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
